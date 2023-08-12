@@ -1,4 +1,70 @@
-﻿body
-{
-    background-color:red;
+﻿/*Variables*/
+:root{
+    --navbarMainColor : rgb(0,0,0);
+    --navbarHoverColor : gray;
+    --navbarFontColor : white;
+
+}
+
+
+
+
+
+
+
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    font-family: 'Segoe UI'
+}
+
+/*Navbar*/
+.navbar {
+    height: 50px;
+    background-color: rgb(0,0,0);
+    border: 0px;
+    padding: 0;
+}
+
+.navbar-brand {
+    
+    color: white;
+    border: 0px;
+    padding: 10px;
+}
+.navbar-brand:hover{
+    /*color:gray;*/
+}
+
+.navbar-brand:hover {
+    background-color: var(--navbarHoverColor);
+}
+
+.nav-link {
+    color: var(--navbarFontColor);
+}
+
+.navbar .container-fluid {
+    padding:0;
+}
+a.navbar-brand:hover{
+    color:var(--navbarFontColor);
 }

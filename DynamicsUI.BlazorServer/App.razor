@@ -1,4 +1,6 @@
-﻿<Router AppAssembly="@typeof(App).Assembly" AdditionalAssemblies="new[] {typeof(DynamicsUIDemo.Pages.Page1).Assembly}">
+﻿<Router AppAssembly="@typeof(App).Assembly" 
+AdditionalAssemblies="new[] {typeof(DynamicsUIDemo.Pages.TestPage).Assembly}"
+>
     <Found Context="routeData">
         <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
         <FocusOnNavigate RouteData="@routeData" Selector="h1" />
