@@ -1,9 +1,8 @@
 ﻿/*Variables*/
-:root{
-    --navbarMainColor : rgb(0,0,0);
-    --navbarHoverColor : gray;
-    --navbarFontColor : white;
-
+:root {
+    --navbarMainColor: rgb(0,0,0);
+    --navbarHoverColor: gray;
+    --navbarFontColor: white;
 }
 
 
@@ -45,26 +44,51 @@ body {
 }
 
 .navbar-brand {
-    
-    color: white;
+    color: var(--navbarFontColor);
     border: 0px;
     padding: 10px;
-}
-.navbar-brand:hover{
-    /*color:gray;*/
+    padding-right:15px;
 }
 
-.navbar-brand:hover {
-    background-color: var(--navbarHoverColor);
-}
+    .navbar-brand:hover {
+        /*color:gray;*/
+    }
+
+    .navbar-brand:hover {
+        background-color: var(--navbarHoverColor);
+    }
 
 .nav-link {
     color: var(--navbarFontColor);
 }
 
 .navbar .container-fluid {
-    padding:0;
+    padding: 0;
 }
-a.navbar-brand:hover{
-    color:var(--navbarFontColor);
+
+a.navbar-brand:hover {
+    color: var(--navbarFontColor);
+}
+
+a.nav-link {
+    font-size: 16px;
+    height: 50px;
+    color: var(--navbarFontColor);
+    padding: 12px;
+
+    border: 0px
+}
+li.nav-item {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+a.nav-link:hover {
+    color: var(--navbarFontColor);
+    background-color: var(--navbarHoverColor);
+}
+
+li.nav-item:hover {
+    color: var(--navbarFontColor);
+    background-color: var(--navbarHoverColor);
 }

@@ -5,10 +5,14 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            @NavItems
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link" aria-current="page" href="#">Home</a>
                 </li>
+
+
                 <li class="nav-item">
                     <a class="nav-link" href="#">Link</a>
                 </li>
@@ -26,6 +30,7 @@
                 <li class="nav-item">
                     <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
                 </li>
+
             </ul>
             <form class="d-flex">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -36,5 +41,14 @@
 </nav>
 
 @code {
+
+    [Parameter]
+    public Color BackgroundColor { get; set; } = Color.Navy;
+
+    [Parameter]
+    public string Title { get; set; }
+
+    [Parameter]
+    public RenderFragment? NavItems { get; set; }
 
 }

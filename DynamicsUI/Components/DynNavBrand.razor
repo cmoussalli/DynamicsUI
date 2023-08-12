@@ -1,0 +1,15 @@
+﻿@using System.Drawing;
+<a class="navbar-brand" href="@URL">@Title</a>
+
+@code {
+
+    [Parameter]
+    public string Title { get; set; }
+
+    [Parameter]
+    public string URL { get; set; }
+
+    [Parameter]
+    public Color Color { get; set; } 
+
+}
