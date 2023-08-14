@@ -11,14 +11,8 @@
 
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     @NavItems
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">Home</a>
-                    </li>
+                   
 
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Dropdown
@@ -63,8 +57,6 @@
     public string ExtraStyle { get; set; }
 
 
-    private string style = "";
-
     private string navStyle;
 
 
@@ -73,11 +65,11 @@
     {//rgb(0,0,0)
 
         if (BackgroundColor is not null) {
-            navStyle = $"background-color:rgb({BackgroundColor.Value.R.ToString()},{BackgroundColor.Value.G.ToString()},{BackgroundColor.Value.B.ToString()})"; 
+            navStyle = $"background-color:{Utilities.ColorBuilder.ConvertToString(BackgroundColor.Value)}"; 
         }
         else
         if (DynSettings.NavBackgroundColor is not null) {
-            navStyle = $"background-color:rgb({DynSettings.NavBackgroundColor.Value.R.ToString()},{DynSettings.NavBackgroundColor.Value.G.ToString()},{DynSettings.NavBackgroundColor.Value.B.ToString()})";
+            navStyle = $"background-color:{Utilities.ColorBuilder.ConvertToString(DynSettings.NavBackgroundColor.Value)}";
         }
 
         StateHasChanged();
