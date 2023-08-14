@@ -1,4 +1,10 @@
-﻿<li class="nav-item">
+﻿
+    @if (Divider == true)
+    {
+        <DynNavDivider />
+    }
+
+<li class="nav-item">
     <a class="nav-link" href="@URL">@Title</a>
 </li>
 
@@ -11,6 +17,7 @@
 
     [Parameter]
     public string URL { get; set; }
+
 
     [CascadingParameter]
     public bool Divider { get; set; }
