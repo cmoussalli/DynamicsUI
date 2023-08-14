@@ -31,7 +31,10 @@ namespace DynamicsUI.BlazorServer
             app.MapBlazorHub();
             app.MapFallbackToPage("/_Host");
 
+            DynSettings.NavBackgroundColor = System.Drawing.Color.Green; 
+
             app.Run();
+
         }
     }
 }

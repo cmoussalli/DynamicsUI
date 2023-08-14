@@ -1,7 +1,7 @@
 ﻿
 <CascadingValue Value="Divider">
 
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg" style="@navStyle">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">@Title</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,7 +48,7 @@
 @code {
 
     [Parameter]
-    public Color BackgroundColor { get; set; } = Color.Navy;
+    public Color? BackgroundColor { get; set; } 
 
     [Parameter]
     public string Title { get; set; }
@@ -59,6 +59,29 @@
     [Parameter]
     public bool Divider { get; set; }
 
+    [Parameter]
+    public string ExtraStyle { get; set; }
 
 
+    private string style = "";
+
+    private string navStyle;
+
+
+
+    protected override void OnInitialized()
+    {//rgb(0,0,0)
+
+        if (BackgroundColor is not null) {
+            navStyle = $"background-color:rgb({BackgroundColor.Value.R.ToString()},{BackgroundColor.Value.G.ToString()},{BackgroundColor.Value.B.ToString()})"; 
+        }
+        else
+        if (DynSettings.NavBackgroundColor is not null) {
+            navStyle = $"background-color:rgb({DynSettings.NavBackgroundColor.Value.R.ToString()},{DynSettings.NavBackgroundColor.Value.G.ToString()},{DynSettings.NavBackgroundColor.Value.B.ToString()})";
+        }
+
+        StateHasChanged();
+    }
+
+    
 }

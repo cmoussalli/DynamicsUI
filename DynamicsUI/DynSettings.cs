@@ -9,7 +9,7 @@ namespace DynamicsUI
 {
     public static class DynSettings
     {
-        public static Color NavBackgroundColor = Color.Black;
+        public static Color? NavBackgroundColor;
 
 
 
