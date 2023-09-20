@@ -1,12 +1,15 @@
-﻿
-    @if (Divider == true)
-    {
-        <DynNavDivider />
-    }
+﻿@if (Divider == true)
+{
+    <DynNavDivider />
+}
 
-<li class="nav-item">
-    <a class="nav-link" href="@URL">@Title</a>
+<li class="nav-item" style="cursor:pointer">
+    <a class="nav-link @isActiveStyle" @onclick="() => Click()">@Title</a>
+
 </li>
+
+
+
 
 @code {
     [Parameter]
@@ -16,10 +19,28 @@
     public string Icon { get; set; }
 
     [Parameter]
-    public string URL { get; set; }
+    public bool IsActive
+    {
+        get { return isActive; }
+        set { isActive = value; if (isActive) { isActiveStyle = ""; } else { isActiveStyle = "disabled"; } }
+    }
+    private bool isActive = true;
+    private string isActiveStyle = "";
 
+
+    [Parameter]
+    public Action OnClickEvent { get; set; }
 
     [CascadingParameter]
     public bool Divider { get; set; }
 
+
+
+    public void Click()
+    {
+        if (isActive)
+        {
+            this.OnClickEvent.Invoke();
+        }
+    }
 }

@@ -1,5 +1,5 @@
 ﻿@using System.Drawing;
-<a class="navbar-brand" href="@URL">@Title</a>
+<a class="navbar-brand" @onclick="() => Click()" >@Title</a>
 
 @code {
 
@@ -7,9 +7,13 @@
     public string Title { get; set; }
 
     [Parameter]
-    public string URL { get; set; }
+    public Action OnClickEvent { get; set; }
 
-    [Parameter]
-    public Color Color { get; set; } 
+
+
+    public void Click()
+    {
+        this.OnClickEvent.Invoke();
+    }
 
 }

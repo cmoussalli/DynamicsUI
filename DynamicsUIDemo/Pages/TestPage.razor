@@ -3,21 +3,31 @@
 
 
 
-<DynNavBar Title="My App 1"  Divider="false" >
-    
-    <NavItems>
-        <DynNavItem Title="Item1" URL="http://google.com"/>
-        <DynNavItem Title="Item2" URL="http://google.com"/>
-        <DynNavItem Title="Item3" URL="http://google.com"/>
+<DynNavBar Title="My App 1" Divider="true" >
 
-        <DynNavItem Title="Item" URL="http://google.com" />
-    </NavItems>
+    <PrimaryArea>
+        <DynNavItem Title="Item1" OnClickEvent="Click1" />
+        <DynNavItem Title="Item2" />
+        <DynNavItem Title="Item3" />
+        <DynNavItem Title="Item" IsActive="false" />
+    </PrimaryArea>
+
+    <SecondaryArea>
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+    </SecondaryArea>
 
 </DynNavBar>
 
-
+<p>@i</p>
 
 
 @code {
+    int i = 0;
 
+    public void Click1()
+    {
+        i = i + 1;
+        StateHasChanged();
+    }
 }

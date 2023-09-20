@@ -31,7 +31,10 @@ namespace DynamicsUI.BlazorServer
             app.MapBlazorHub();
             app.MapFallbackToPage("/_Host");
 
-            DynSettings.NavBackgroundColor = System.Drawing.Color.Green; 
+            DynSettings.NavBackgroundColor = System.Drawing.Color.Blue;
+            DynSettings.NavBackgroundColor_Hover = System.Drawing.Color.Gray;
+            DynSettings.NavFontColor = System.Drawing.Color.White;
+            
 
             app.Run();
 

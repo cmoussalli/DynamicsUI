@@ -10,28 +10,12 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    @NavItems
-                   
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Dropdown
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                    </li>
+                    @PrimaryArea
 
                 </ul>
                 <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                    @SecondaryArea
+
                 </form>
             </div>
         </div>
@@ -42,13 +26,25 @@
 @code {
 
     [Parameter]
-    public Color? BackgroundColor { get; set; } 
+    public Color? BackgroundColor { get; set; }
+    [Parameter]
+    public Color? BackgroundColor_Disabled { get; set; }
+    [Parameter]
+    public Color? BackgroundColor_Hover { get; set; }
+
+    [Parameter]
+    public Color? FontColor { get; set; }
+
+
 
     [Parameter]
     public string Title { get; set; }
 
     [Parameter]
-    public RenderFragment? NavItems { get; set; }
+    public RenderFragment? PrimaryArea { get; set; }
+
+    [Parameter]
+    public RenderFragment? SecondaryArea { get; set; }
 
     [Parameter]
     public bool Divider { get; set; }
@@ -62,18 +58,55 @@
 
 
     protected override void OnInitialized()
-    {//rgb(0,0,0)
-
-        if (BackgroundColor is not null) {
-            navStyle = $"background-color:{Utilities.ColorBuilder.ConvertToString(BackgroundColor.Value)}"; 
+    {
+        //BackgroundColor
+        if (BackgroundColor is not null)
+        {
+            navStyle = $"background-color:{Utilities.ColorBuilder.ConvertToString(BackgroundColor.Value)};";
         }
         else
-        if (DynSettings.NavBackgroundColor is not null) {
-            navStyle = $"background-color:{Utilities.ColorBuilder.ConvertToString(DynSettings.NavBackgroundColor.Value)}";
+        if (DynSettings.NavBackgroundColor is not null)
+        {
+            navStyle = $"background-color:{Utilities.ColorBuilder.ConvertToString(DynSettings.NavBackgroundColor.Value)};";
         }
 
+        //BackgroundColor_Hover
+        if (BackgroundColor_Hover is not null)
+        {
+            navStyle = navStyle + $"--navbarHoverColor:{Utilities.ColorBuilder.ConvertToString(BackgroundColor_Hover.Value)};";
+        }
+        else
+        if (DynSettings.NavBackgroundColor_Hover is not null)
+        {
+            navStyle = navStyle + $"--navbarHoverColor:{Utilities.ColorBuilder.ConvertToString(DynSettings.NavBackgroundColor_Hover.Value)};";
+        }
+
+        //BackgroundColor_Disabled
+        //     if (BackgroundColor_Disabled is not null)
+        //     {
+        //         navStyle = $"navbarHoverColor:{Utilities.ColorBuilder.ConvertToString(BackgroundColor_Disabled.Value)}";
+        //     }
+        //     else
+        // if (DynSettings.NavBackgroundColor_Hover is not null)
+        //     {
+        //         navStyle = $"navbarHoverColor:{Utilities.ColorBuilder.ConvertToString(DynSettings.NavBackgroundColor_Hover.Value)}";
+        //     }
+
+        //FontColor
+        if (FontColor is not null)
+        {
+            navStyle = navStyle + $"--navbarFontColor:{Utilities.ColorBuilder.ConvertToString(FontColor.Value)};";
+        }
+        else
+        if (DynSettings.NavBackgroundColor_Hover is not null)
+        {
+            navStyle = navStyle + $"--navbarFontColor:{Utilities.ColorBuilder.ConvertToString(DynSettings.NavFontColor.Value)};";
+        }
+
+
+        if (!string.IsNullOrEmpty(ExtraStyle)) { navStyle = navStyle + " " + ExtraStyle; }
         StateHasChanged();
     }
 
-    
+
 }
